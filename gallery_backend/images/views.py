@@ -8,15 +8,15 @@ def gallery_view(request, id=None):
     media_url = request.build_absolute_uri(settings.MEDIA_URL)
 
     # Load the Excel file with correct header row
-    excel_path = r"C:\Users\sflou\Desktop\playground\gallery_backend\paintings\Book1.xlsx"
+    excel_path = os.path.join(settings.MEDIA_ROOT, 'Book1.xlsx')
     df = pd.read_excel(excel_path, header=2)  # Use header=3 if your real data starts at row 4
     # Strip spaces from column names
     df.columns = df.columns.str.strip()
 
-    # Clean up the DataFrame (drop rows with NaN in 'Α/Α')
-    df = df[df['Α/Α'].notna()]
-    print(df.head())  # Debugging line to check DataFrame content
-    # ...existing code...
+    excel_path = os.path.join(settings.MEDIA_ROOT, 'Book1.xlsx')
+    print("Excel path:", excel_path)
+    df = pd.read_excel(excel_path, header=2)
+    print(df.head())
 
     gallery = []
 
