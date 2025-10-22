@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(252, 252, 252);
+    margin: 0.01em;
+}
+img {
+  width: 400px;
+  height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  max-width: 100%;
+  margin-bottom: 18px;
+  pointer-events: none;
+}

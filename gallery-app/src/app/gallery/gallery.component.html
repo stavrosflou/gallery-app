@@ -1,0 +1,22 @@
+<div class="gallery">
+  <div class="row" *ngFor="let row of rows">
+    <!-- Option 1: Use wrapper to prevent trembling -->
+    <div 
+      class="painting-wrapper"
+      *ngFor="let painting of row"
+    >
+      <div
+        class="painting"
+        (click)="openInAppTab(painting)"
+        tabindex="0"
+      > 
+      <p>{{painting.artist}}</p>
+        <img
+          [src]="painting.src"
+          [alt]="painting.title"
+        />
+        <p>{{painting.title}}</p>
+      </div>
+    </div>
+  </div>
+

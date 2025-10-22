@@ -1,0 +1,102 @@
+.single-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center everything horizontally */
+  padding: 24px;
+  min-height: 70vh;
+  position: relative;
+}
+
+.image-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align image top */
+  gap: 80px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.image-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: zoom-in; 
+}
+
+.image-side {
+  flex: 0 0 auto; /* Image keeps natural size */
+}
+
+
+.image-title {
+  margin-top: 18px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+  text-align: center;
+  letter-spacing: 0.02em;
+  padding: 8px 18px;
+  border-radius: 10px;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.description-side {
+  align-self: center;
+  padding: 0 16px;         /* Απόσταση από τα άκρα */
+}
+
+.image-description {
+  font-size: 1.1rem;
+  color: #222;
+  background: #fefefe;
+  border-radius: 14px;
+  padding: 20px 24px;
+  word-break: break-word;
+  line-height: 1.6;
+  font-weight: 400;
+  width: 100%;             /* Πλήρες πλάτος του container */
+  text-align: left;        /* Left align for metadata */
+  overflow-wrap: break-word; /* Σπάσιμο λέξεων αν είναι πολύ μεγάλες */
+}
+
+.image-description .meta {
+  margin-bottom: 8px;
+}
+
+.image-description .meta-text {
+  margin-bottom: 12px;
+  white-space: pre-wrap; /* preserve line breaks in description text */
+}
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0; /* top, right, bottom, left = 0 */
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  width: 80%;
+  height: 80%;
+  border-radius: 12px;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}

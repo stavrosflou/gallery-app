@@ -1,0 +1,52 @@
+/* Header styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally */
+  padding: 24px 24px 16px 24px; /* More top padding */
+  background-color: #222;
+  color: #fff;
+  position: relative;
+}
+
+/* Title */
+.title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: bold;
+  flex: 1;
+  text-align: center; /* Center the title text */
+}
+
+
+.back-icon {
+  position: absolute;
+  top: 15px;
+  left: 24px;
+  font-size: 2rem;
+  cursor: pointer;
+  user-select: none;
+  color: #fff;
+  background: linear-gradient(135deg, #6b7280 60%, #d1d5db 100%);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(107,114,128,0.18), 0 2px 8px rgba(209,213,219,0.10);
+  border: none;
+  outline: 2px solid #fff3;
+  outline-offset: 2px;
+  transition: 
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+  z-index: 100;
+}
+
+.back-icon:hover {
+  background: linear-gradient(135deg, #9ca3af 60%, #6b7280 100%);
+  box-shadow: 0 8px 32px rgba(107,114,128,0.22), 0 4px 16px rgba(209,213,219,0.12);
+  transform: scale(1.08) rotate(-6deg);
+}

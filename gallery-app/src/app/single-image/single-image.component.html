@@ -1,0 +1,27 @@
+<div class="single-image-container">
+  <div *ngIf="image" class="image-content">
+    <div class="image-side" (click)="openModal()">
+      <!-- click για να ανοίγει το modal -->
+      <img [src]="image.src" [alt]="image.title"  />
+      <div class="image-title">{{ image.title }}</div>
+    </div>
+
+    <div class="description-side">
+      <div class="image-description">
+        <div class="meta"><strong>Artist:</strong> {{ image.artist }}</div>
+        <div class="meta"><strong>Year:</strong> {{ image.year }}</div>
+        <div class="meta"><strong>Description:</strong></div>
+        <div class="meta-text">{{ image.description }}</div>
+        <div class="meta"><strong>Dimensions:</strong> {{ image.dimensions }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
+  <!-- X button -->
+  <span class="close" (click)="closeModal(); $event.stopPropagation()">&times;</span>
+  <!-- Zoomed Image -->
+  <img class="modal-content" [src]="image?.src" [alt]="image?.title" />
+</div>
