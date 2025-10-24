@@ -1,12 +1,16 @@
 <header class="header">
   <span class="back-icon" *ngIf="showBackIcon" (click)="goBack()">&#8592;</span>
-  <h1 class="title">Gallery App</h1>
+  <h1 class="title">Central Gallery</h1>
 
-  <!-- <p-dropdown 
-    #dropdown 
-    [options]="menuItems" 
-    [(ngModel)]="selectedMenu" 
-    placeholder="☰"
-    styleClass="custom-dropdown">
-  </p-dropdown> -->
+  <div class="menu-container">
+    <button class="menu-button" (click)="toggleMenu()">≡</button>
+    <nav class="menu-dropdown" *ngIf="isMenuOpen">
+      <a *ngFor="let item of menuItems" 
+         class="menu-item" 
+         (click)="handleMenuClick(item.value)">
+        {{ item.label }}
+      </a>
+    </nav>
+  </div>
+
 </header>

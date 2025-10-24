@@ -1,0 +1,17 @@
+<div class="popup-backdrop" *ngIf="message" (click)="close()">
+  <div class="popup" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+        <span *ngIf="message.type === 'success'">✓</span>
+        <span *ngIf="message.type === 'error'">✕</span>
+        <span *ngIf="message.type === 'info'"></span>
+        <span *ngIf="message.type === 'warning'">⚠</span>
+      <button class="popup-close" (click)="close()">&times;</button>
+    </div>
+    <div class="popup-body">
+      <p class="popup-message">{{ message.message }}</p>
+    </div>
+    <div class="popup-footer">
+      <button class="popup-ok-button" (click)="close()">OK</button>
+    </div>
+  </div>
+</div>

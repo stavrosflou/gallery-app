@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 from gallery_backend import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('images/', include('images.urls')),  # όλα τα endpoints για images
 
 ]
