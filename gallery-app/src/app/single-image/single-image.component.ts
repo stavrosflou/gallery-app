@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { GalleryService } from '../services/gallery.service';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../pipes/translate.pipe';
 
 @Component({
   selector: 'app-single-image',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './single-image.component.html',
   styleUrls: ['./single-image.component.css']
 })

@@ -1,3 +1,117 @@
+.gallery-container {
+  background: rgb(255, 255, 255);
+}
+
+/* Controls Bar - Minimalistic Design */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  background: #fff;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.controls-right {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2px;
+}
+
+/* Search Bar - Artistic Styling */
+.search-container {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 50px 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #999;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  pointer-events: none;
+  color: #999;
+  z-index: 1;
+}
+
+/* Filter and Sort - Artistic Labels */
+.filter-container,
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.filter-container label,
+.sort-container label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #666;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.filter-select,
+.sort-select {
+  padding: 10px 32px 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  min-width: 140px;
+}
+
+.filter-select:hover,
+.sort-select:hover {
+  border-color: #999;
+}
+
+.filter-select:focus,
+.sort-select:focus {
+  outline: none;
+  border-color: #999;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Gallery Grid */
 .gallery {
   display: flex;
   flex-direction: column;
@@ -89,6 +203,32 @@
   margin-bottom: 0;
 }
 @media (max-width: 600px) {
+  .controls-bar {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .search-container {
+    max-width: 100%;
+  }
+
+  .controls-right {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filter-container,
+  .sort-container {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-select,
+  .sort-select {
+    flex: 1;
+  }
+
   .row {
     flex-direction: column;
     gap: 16px;
@@ -107,5 +247,115 @@
   
   .painting-wrapper:hover .painting {
     transform: scale(1.05);
+  }
+}
+
+/* Large Screens (1440px and up) */
+@media (min-width: 1440px) {
+  .controls-bar {
+    padding: 32px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .search-container {
+    max-width: 500px;
+  }
+
+  .gallery {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 48px 32px 64px 32px;
+  }
+
+  .row {
+    gap: 180px;
+    padding: 80px 0;
+  }
+
+  .painting-wrapper {
+    flex: 0 0 360px;
+    height: 460px;
+  }
+}
+
+/* Extra Large Screens (1920px and up) */
+@media (min-width: 1920px) {
+  .controls-bar {
+    padding: 40px 80px;
+    max-width: 1920px;
+  }
+
+  .search-container {
+    max-width: 600px;
+  }
+
+  .controls-right {
+    gap: 40px;
+  }
+
+  .gallery {
+    max-width: 1920px;
+    padding: 64px 48px 80px 48px;
+  }
+
+  .row {
+    gap: 200px;
+    padding: 100px 0;
+  }
+
+  .painting-wrapper {
+    flex: 0 0 400px;
+    height: 500px;
+  }
+
+  .painting p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Ultra Wide Screens (2560px and up) */
+@media (min-width: 2560px) {
+  .controls-bar {
+    padding: 48px 120px;
+    max-width: 2400px;
+  }
+
+  .search-container {
+    max-width: 700px;
+  }
+
+  .search-input {
+    font-size: 1.1rem;
+    padding: 14px 60px 14px 20px;
+  }
+
+  .search-icon {
+    font-size: 1.5rem;
+  }
+
+  .filter-select,
+  .sort-select {
+    font-size: 1rem;
+    min-width: 160px;
+  }
+
+  .gallery {
+    max-width: 2400px;
+    padding: 80px 64px 100px 64px;
+  }
+
+  .row {
+    gap: 240px;
+    padding: 120px 0;
+  }
+
+  .painting-wrapper {
+    flex: 0 0 480px;
+    height: 580px;
+  }
+
+  .painting p {
+    font-size: 1.2rem;
   }
 }

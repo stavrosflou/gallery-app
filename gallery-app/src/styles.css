@@ -1,7 +1,111 @@
 body{
     background-color: rgb(252, 252, 252);
-    margin: 0.01em;
+    margin: 0;
+    padding-top: 90px; /* Space for fixed header */
 }
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e5e7eb;
+}
+
+body.dark-mode .gallery-container {
+    background: #1a1a1a;
+}
+
+body.dark-mode .controls-bar {
+    background: #1a1a1a;
+    border-bottom: none;
+}
+
+body.dark-mode .search-input {
+    background: #2d2d2d;
+    color: #e5e7eb;
+    border-color: #444;
+}
+
+body.dark-mode .search-input::placeholder {
+    color: #888;
+}
+
+body.dark-mode .search-input:focus {
+    border-color: #666;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .search-icon {
+    color: #888;
+}
+
+body.dark-mode .filter-container label,
+body.dark-mode .sort-container label {
+    color: #aaa;
+}
+
+body.dark-mode .filter-select,
+body.dark-mode .sort-select {
+    background: #2d2d2d !important;
+    color: #e5e7eb !important;
+    border-color: #444 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e5e7eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+}
+
+body.dark-mode .filter-select:hover,
+body.dark-mode .sort-select:hover {
+    border-color: #666;
+}
+
+body.dark-mode .filter-select:focus,
+body.dark-mode .sort-select:focus {
+    border-color: #666;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .filter-select option,
+body.dark-mode .sort-select option {
+    background: #2d2d2d;
+    color: #e5e7eb;
+}
+
+body.dark-mode .gallery {
+    background: #1a1a1a;
+}
+
+body.dark-mode .painting {
+    background: #1a1a1a !important;
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .painting::before,
+body.dark-mode .painting::after {
+    border-color: #fff !important;
+}
+
+body.dark-mode .painting p {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .single-image-container {
+    background: #1a1a1a;
+}
+
+body.dark-mode .image-title {
+    color: #e5e7eb;
+}
+
+body.dark-mode .image-description {
+    background: #222;
+    color: #e5e7eb;
+}
+
+body.dark-mode .footer {
+    background-color: #111;
+    color: #aaa;
+}
+
 img {
   width: 400px;
   height: 400px;

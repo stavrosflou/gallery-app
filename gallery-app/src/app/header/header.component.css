@@ -6,7 +6,12 @@
   padding: 24px 24px 16px 24px; /* More top padding */
   background-color: #222;
   color: #fff;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Title */
@@ -51,12 +56,108 @@
   transform: scale(1.08) rotate(-6deg);
 }
 
-/* Menu Container */
-.menu-container {
+/* Header Right Side */
+.header-right {
   position: absolute;
   top: 20px;
   right: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
   z-index: 100;
+}
+
+/* Language Switch Toggle */
+.language-switch {
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 24px;
+  padding: 4px;
+  gap: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+  border: 1px solid #333;
+}
+
+.lang-option {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lang-option:hover {
+  color: #ccc;
+}
+
+.lang-option.active {
+  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: linear-gradient(135deg, #1a1a1a 60%, #2d2d2d 100%);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
+  outline: 2px solid #fff3;
+  outline-offset: 2px;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.theme-toggle:hover {
+  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+  transform: scale(1.08);
+}
+
+.theme-toggle:active {
+  transform: scale(1.02);
+}
+
+.theme-icon {
+  display: inline-block;
+  position: absolute;
+}
+
+.theme-icon.animate {
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Menu Container */
+.menu-container {
+  position: relative;
 }
 
 /* Menu Button */
@@ -101,6 +202,7 @@
   min-width: 200px;
   overflow: hidden;
   animation: slideDown 0.2s ease-out;
+  z-index: 10;
 }
 
 @keyframes slideDown {

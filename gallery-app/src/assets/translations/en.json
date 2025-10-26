@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Central Gallery",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "gallery": {
+    "search": "Search paintings...",
+    "filter": "Filter:",
+    "filterAll": "All",
+    "filterRecent": "Recent",
+    "filterFavorites": "Favorites",
+    "sortBy": "Sort By:",
+    "sortDefault": "Default",
+    "sortTitle": "Title",
+    "sortArtist": "Artist",
+    "sortYear": "Year"
+  },
+  "image": {
+    "artist": "Artist:",
+    "year": "Year:",
+    "description": "Description:",
+    "dimensions": "Dimensions:"
+  },
+  "footer": {
+    "rights": "© 2024 Art Gallery. All rights reserved."
+  },
+  "popup": {
+    "ok": "OK"
+  }
+}

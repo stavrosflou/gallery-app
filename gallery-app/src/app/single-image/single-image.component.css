@@ -100,3 +100,133 @@
   cursor: pointer;
   user-select: none;
 }
+
+/* Large Screens (1440px and up) */
+@media (min-width: 1440px) {
+  .single-image-container {
+    padding: 48px;
+    min-height: calc(100vh - 140px); /* Account for header and footer */
+  }
+
+  .image-content {
+    max-width: 1600px;
+    gap: 100px;
+  }
+
+  .image-title {
+    font-size: 2.2rem;
+    margin-top: 24px;
+    max-width: 700px;
+  }
+
+  .description-side {
+    padding: 0 24px;
+  }
+
+  .image-description {
+    font-size: 1.15rem;
+    padding: 24px 32px;
+    line-height: 1.7;
+  }
+
+  .close {
+    font-size: 3rem;
+    top: 32px;
+    right: 48px;
+  }
+}
+
+/* Extra Large Screens (1920px and up) */
+@media (min-width: 1920px) {
+  .single-image-container {
+    padding: 64px;
+    min-height: calc(100vh - 160px); /* Account for header and footer */
+  }
+
+  .image-content {
+    max-width: 1800px;
+    gap: 120px;
+  }
+
+  .image-title {
+    font-size: 2.5rem;
+    margin-top: 32px;
+    max-width: 800px;
+    padding: 12px 24px;
+  }
+
+  .description-side {
+    padding: 0 32px;
+  }
+
+  .image-description {
+    font-size: 1.25rem;
+    padding: 32px 40px;
+    line-height: 1.8;
+    border-radius: 16px;
+  }
+
+  .image-description .meta {
+    margin-bottom: 10px;
+  }
+
+  .image-description .meta-text {
+    margin-bottom: 16px;
+  }
+
+  .close {
+    font-size: 3.5rem;
+    top: 40px;
+    right: 64px;
+  }
+}
+
+/* Ultra Wide Screens (2560px and up) */
+@media (min-width: 2560px) {
+  .single-image-container {
+    padding: 80px;
+    min-height: calc(100vh - 180px); /* Account for header and footer */
+  }
+
+  .image-content {
+    max-width: 2200px;
+    gap: 160px;
+  }
+
+  .image-title {
+    font-size: 3rem;
+    margin-top: 40px;
+    max-width: 1000px;
+    padding: 16px 32px;
+  }
+
+  .description-side {
+    padding: 0 48px;
+  }
+
+  .image-description {
+    font-size: 1.4rem;
+    padding: 40px 52px;
+    line-height: 1.9;
+    border-radius: 18px;
+  }
+
+  .image-description .meta {
+    margin-bottom: 12px;
+  }
+
+  .image-description .meta-text {
+    margin-bottom: 20px;
+  }
+
+  .modal-content {
+    width: 85%;
+    height: 85%;
+  }
+
+  .close {
+    font-size: 4rem;
+    top: 48px;
+    right: 80px;
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Central Gallery",
+    "home": "Αρχική",
+    "about": "Σχετικά",
+    "contact": "Επικοινωνία"
+  },
+  "gallery": {
+    "search": "Αναζήτηση πινάκων...",
+    "filter": "Φίλτρα:",
+    "filterAll": "Όλα",
+    "filterRecent": "Πρόσφατα",
+    "filterFavorites": "Αγαπημένα",
+    "sortBy": "Ταξινόμηση:",
+    "sortDefault": "Προεπιλογή",
+    "sortTitle": "Τίτλος",
+    "sortArtist": "Καλλιτέχνης",
+    "sortYear": "Έτος"
+  },
+  "image": {
+    "artist": "Καλλιτέχνης:",
+    "year": "Έτος:",
+    "description": "Περιγραφή:",
+    "dimensions": "Διαστάσεις:"
+  },
+  "footer": {
+    "rights": "© 2024 Πινακοθήκη Τέχνης. Όλα τα δικαιώματα διατηρούνται."
+  },
+  "popup": {
+    "ok": "Εντάξει"
+  }
+}
