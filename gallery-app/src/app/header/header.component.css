@@ -2,7 +2,7 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align content to the left */
   padding: 24px 24px 16px 24px; /* More top padding */
   background-color: #222;
   color: #fff;
@@ -19,41 +19,53 @@
   margin: 0;
   font-size: 2.2rem;
   font-weight: bold;
-  flex: 1;
-  text-align: center; /* Center the title text */
+  flex: 0 1 auto;
+  text-align: left; /* Left align the title text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 40px;
+  max-width: 300px;
 }
 
-
-.back-icon {
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  user-select: none;
-  color: #fff;
-  background: linear-gradient(135deg, #1a1a1a 60%, #2d2d2d 100%);
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
+/* Navigation Tabs */
+.nav-tabs {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15);
-  border: none;
-  outline: 2px solid #fff3;
-  outline-offset: 2px;
-  transition: 
-    background 0.2s,
-    box-shadow 0.2s,
-    transform 0.15s;
-  z-index: 100;
+  gap: 8px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.back-icon:hover {
-  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
-  transform: scale(1.08) rotate(-6deg);
+.nav-tab {
+  padding: 8px 20px;
+  color: #999;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-tab.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #fff;
 }
 
 /* Header Right Side */

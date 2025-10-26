@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { PopupService } from '../services/popup.service';
@@ -10,7 +11,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, FormsModule, DropdownModule, SplitButtonModule, TranslatePipe],
+  imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive, DropdownModule, SplitButtonModule, TranslatePipe],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
@@ -34,7 +35,6 @@ export class HeaderComponent {
   @ViewChild('dropdown') dropdown!: Dropdown;
   
   constructor(
-    private location: Location, 
     private popupService: PopupService,
     private translationService: TranslationService
   ) {
@@ -49,14 +49,6 @@ export class HeaderComponent {
     const savedTheme = localStorage.getItem('theme');
     this.isDarkMode = savedTheme === 'dark';
     this.applyTheme();
-  }
-  
-  get showBackIcon(): boolean {
-    return this.location.path().includes('/image');
-  }
-  
-  goBack() {
-    this.location.back();
   }
   
   toggleMenu() {

@@ -2,6 +2,100 @@
   background: rgb(255, 255, 255);
 }
 
+/* Splash Screen Styles */
+/* .splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.splash-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+}
+
+.splash-image {
+  object-fit: contain;
+  animation: zoomIn 3s ease-out;
+}
+
+.splash-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+  padding: 60px 40px 40px;
+  color: white;
+  text-align: center;
+  animation: slideUp 1s ease-out 0.5s both;
+}
+
+.splash-title {
+  font-size: 3rem;
+  font-weight: 300;
+  margin: 0 0 12px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  font-family: 'Georgia', serif;
+}
+
+.splash-artist {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0;
+  opacity: 0.9;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .splash-title {
+    font-size: 2rem;
+  }
+  
+  .splash-artist {
+    font-size: 1.2rem;
+  }
+  
+  .splash-overlay {
+    padding: 40px 20px 30px;
+  }
+} */
+
 /* Controls Bar - Minimalistic Design */
 .controls-bar {
   display: flex;
@@ -58,7 +152,8 @@
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.3rem;
+  width: 22px;
+  height: 22px;
   pointer-events: none;
   color: #999;
   z-index: 1;

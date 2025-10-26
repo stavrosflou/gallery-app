@@ -1,14 +1,23 @@
 <div class="single-image-container">
+  <!-- Page Title -->
+  <h1 class="page-title">Through the Art</h1>
+
   <div *ngIf="image" class="image-content">
-    <div class="image-side" (click)="openModal()">
-      <!-- click για να ανοίγει το modal -->
-      <img [src]="image.src" [alt]="image.title"  />
-      <div class="image-title">{{ image.title }}</div>
+    <!-- Image Section with Title and Artist Above -->
+    <div class="image-section">
+      <div class="image-header">
+        <div class="title-left">{{ image.title }}</div>
+        <div class="artist-right">{{ image.artist }}</div>
+      </div>
+      <div class="image-wrapper" (click)="openModal()">
+        <img [src]="image.src" [alt]="image.title" />
+      </div>
     </div>
 
+    <!-- Description Section -->
     <div class="description-side">
+      <img [src]="image.src" [alt]="image.title" class="description-thumbnail" />
       <div class="image-description">
-        <div class="meta"><strong>{{ 'image.artist' | translate }}</strong> {{ image.artist }}</div>
         <div class="meta"><strong>{{ 'image.year' | translate }}</strong> {{ image.year }}</div>
         <div class="meta"><strong>{{ 'image.description' | translate }}</strong></div>
         <div class="meta-text">{{ image.description }}</div>
@@ -17,6 +26,11 @@
     </div>
   </div>
 </div>
+
+<!-- Floating Back Button -->
+<button class="back-to-paintings" (click)="goBackToPaintings()">
+  ← Back to Paintings
+</button>
 
 <!-- Modal -->
 <div class="modal" *ngIf="isModalOpen" (click)="closeModal()">

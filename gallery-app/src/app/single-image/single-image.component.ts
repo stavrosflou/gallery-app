@@ -74,4 +74,8 @@ closeModal() {
   this.isModalOpen = false;
 }
 
+goBackToPaintings() {
+  this.location.back();
+}
+
 }

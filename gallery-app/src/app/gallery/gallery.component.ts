@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '../pipes/translate.pipe';
+// import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-gallery',
@@ -12,6 +13,13 @@ import { TranslatePipe } from '../pipes/translate.pipe';
   imports: [CommonModule, HttpClientModule, FormsModule, TranslatePipe],
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
+  // animations: [
+  //   trigger('fadeOut', [
+  //     transition(':leave', [
+  //       animate('800ms ease-out', style({ opacity: 0 }))
+  //     ])
+  //   ])
+  // ]
 })
 export class GalleryComponent {
   paintings: {
@@ -25,10 +33,20 @@ export class GalleryComponent {
   searchTerm: string = '';
   selectedFilter: string = 'all';
   selectedSort: string = 'default';
+  
+  // Splash screen properties
+  // showSplash: boolean = false;
+  // splashPainting: any = null;
 
-  constructor(private galleryService: GalleryService, private router: Router) {}
+  constructor(
+    private galleryService: GalleryService, 
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    // Check if splash was already shown in this tab session
+    // const splashShown = sessionStorage.getItem('splash-shown');
+    
     // Fetch images from backend
     this.galleryService.getImages().subscribe((data) => {
       this.allPaintings = data.map((item: any) => ({
@@ -41,6 +59,20 @@ export class GalleryComponent {
       }));
       this.paintings = [...this.allPaintings];
       this.applyFiltersAndSort();
+      
+      // Show splash only once per tab session
+      // if (!splashShown && this.allPaintings.length > 0) {
+      //   this.showSplash = true;
+      //   const randomIndex = Math.floor(Math.random() * this.allPaintings.length);
+      //   this.splashPainting = this.allPaintings[randomIndex];
+        
+      //   // Mark splash as shown for this tab session
+      //   sessionStorage.setItem('splash-shown', 'true');
+        
+      //   setTimeout(() => {
+      //     this.showSplash = false;
+      //   }, 3000);
+      // }
     });
   }
 
@@ -98,7 +130,7 @@ export class GalleryComponent {
   }
 
   openInAppTab(painting: any) {
-    this.router.navigate(['/image', painting.id]).then(() => {
+    this.router.navigate(['/paintings', painting.id]).then(() => {
       window.scrollTo(0, 0);
     });
   }

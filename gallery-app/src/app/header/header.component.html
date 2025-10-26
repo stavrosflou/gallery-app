@@ -1,6 +1,15 @@
 <header class="header">
-  <span class="back-icon" *ngIf="showBackIcon" (click)="goBack()">&#8592;</span>
   <h1 class="title">{{ 'header.title' | translate }}</h1>
+
+  <!-- Navigation Tabs -->
+  <nav class="nav-tabs">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-tab">
+      {{ 'header.home' | translate }}
+    </a>
+    <a routerLink="/paintings" routerLinkActive="active" class="nav-tab">
+      {{ 'header.paintings' | translate }}
+    </a>
+  </nav>
 
   <div class="header-right">
     <!-- Language Toggle Switch -->
