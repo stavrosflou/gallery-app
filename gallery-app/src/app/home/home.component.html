@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="home-container">
+  <div class="carousel-section">
+    <h1 class="carousel-title">Featured Artworks</h1>
+    
+    <div class="carousel" *ngIf="featuredPaintings.length > 0">
+      <div class="carousel-wrapper">
+        <div class="carousel-slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+          <div class="carousel-slide" *ngFor="let painting of featuredPaintings">
+            <div class="slide-content" (click)="viewPainting(painting.id)">
+              <img [src]="painting.src" [alt]="painting.title" class="slide-image">
+              <!-- <div class="slide-info">
+                <h2 class="slide-title">{{ painting.title }}</h2>
+                <p class="slide-artist">{{ painting.artist }}</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="carousel-arrow carousel-arrow-left" (click)="previousSlide()">
+        &#10094;
+      </button>
+      <button class="carousel-arrow carousel-arrow-right" (click)="nextSlide()">
+        &#10095;
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="carousel-dots">
+        <span 
+          *ngFor="let painting of featuredPaintings; let i = index" 
+          class="dot" 
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)">
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

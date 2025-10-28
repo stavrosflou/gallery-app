@@ -13,7 +13,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
   styleUrls: ['./single-image.component.css']
 })
 export class SingleImageComponent implements OnInit {
-  image: { id: number; src: string; title: string; description?: string; artist?: string; year?: string | number; dimensions?: string } | null = null;
+  image: { id: number; src: string; title: string; description?: string; artist?: string; year?: string | number; dimensions?: string; materials?: string; width?: number; height?: number } | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,12 +40,26 @@ export class SingleImageComponent implements OnInit {
         // Normalize dimensions: replace Greek 'χ' or multiplication sign with ASCII 'x'
         let rawDim: any = item.dimensions ?? item.size ?? undefined;
         let dimValue: string | undefined = undefined;
+        let widthValue: number | undefined = undefined;
+        let heightValue: number | undefined = undefined;
+        
         if (rawDim !== undefined && rawDim !== null) {
           dimValue = String(rawDim)
             .replace(/×/g, 'x')      // Unicode multiplication sign
             .replace(/χ/g, 'x')      // Greek small letter chi
             .replace(/\s*x\s*/gi, ' x ') // normalize spacing around x
             .trim();
+          
+          // Parse width and height from dimensions (e.g., "100 x 80")
+          const parts = dimValue.split(/\s*x\s*/i);
+          if (parts.length === 2) {
+            const w = parseFloat(parts[0]);
+            const h = parseFloat(parts[1]);
+            if (!isNaN(w) && !isNaN(h)) {
+              widthValue = w;
+              heightValue = h;
+            }
+          }
         }
 
         this.image = {
@@ -56,6 +70,9 @@ export class SingleImageComponent implements OnInit {
           artist: item.artist ?? item.creator ?? 'Unknown artist',
           year: yearValue,
           dimensions: dimValue,
+          materials: item.materials ?? undefined,
+          width: widthValue,
+          height: heightValue,
         };
       });
     });
@@ -76,6 +93,22 @@ closeModal() {
 
 goBackToPaintings() {
   this.location.back();
+}
+
+getScaledWidth(): number {
+  if (!this.image?.width) return 0;
+  // Scale to fit thumbnail (max 100px for larger dimension)
+  const maxSize = 80;
+  const ratio = this.image.height ? this.image.width / Math.max(this.image.width, this.image.height) : 1;
+  return maxSize * ratio;
+}
+
+getScaledHeight(): number {
+  if (!this.image?.height) return 0;
+  // Scale to fit thumbnail (max 100px for larger dimension)
+  const maxSize = 80;
+  const ratio = this.image.width ? this.image.height / Math.max(this.image.width, this.image.height) : 1;
+  return maxSize * ratio;
 }
 
 }

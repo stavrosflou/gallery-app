@@ -40,4 +40,8 @@ export class GalleryService {
       })
     );
   }
+
+  getRandomImages(): Observable<any> {
+    return this.http.get<any>(`${environment.apiBaseUrl}/images/gallery/random/`);
+  }
 }

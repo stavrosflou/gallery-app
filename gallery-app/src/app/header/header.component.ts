@@ -16,18 +16,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  menuItems = [
-    { 
-      label: 'header.about', 
-      value: 'about'
-    },
-    { 
-      label: 'header.contact', 
-      value: 'contact'
-    },
-  ];
-  selectedMenu: string | null = null;
-  isMenuOpen = false;
+
   currentLanguageCode = 'en';
   isDarkMode = false;
   themeAnimating = false;
@@ -50,10 +39,7 @@ export class HeaderComponent {
     this.isDarkMode = savedTheme === 'dark';
     this.applyTheme();
   }
-  
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
+
   
   changeLanguage(langCode: string) {
     this.translationService.setLanguage(langCode);
@@ -76,19 +62,6 @@ export class HeaderComponent {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
-    }
-  }
-  
-  handleMenuClick(menu: string) {
-    this.selectedMenu = menu;
-    this.isMenuOpen = false;
-    
-    // Show popup based on menu selection
-
-    if (menu === 'about') {
-      this.popupService.info('🎨 Welcome to Central Gallery! Explore our collection of amazing artworks from talented artists around the world.');
-    } else if (menu === 'contact') {
-      this.popupService.info('📧 Contact us at: gallery@central.com or call +1 (555) 123-4567');
     }
   }
 }

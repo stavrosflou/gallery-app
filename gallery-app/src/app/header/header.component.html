@@ -33,17 +33,6 @@
       <span class="theme-icon" [class.animate]="themeAnimating">{{ isDarkMode ? '🌙' : '☀️' }}</span>
     </button>
 
-    <!-- Menu -->
-    <div class="menu-container">
-      <button class="menu-button" (click)="toggleMenu()">≡</button>
-      <nav class="menu-dropdown" *ngIf="isMenuOpen">
-        <a *ngFor="let item of menuItems" 
-           class="menu-item" 
-           (click)="handleMenuClick(item.value)">
-          {{ item.label | translate }}
-        </a>
-      </nav>
-    </div>
   </div>
 
 </header>

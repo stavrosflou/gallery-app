@@ -31,8 +31,7 @@ export class GalleryComponent {
 
   allPaintings: any[] = []; // Store original data
   searchTerm: string = '';
-  selectedFilter: string = 'all';
-  selectedSort: string = 'default';
+  selectedSort: string = '';
   
   // Splash screen properties
   // showSplash: boolean = false;
@@ -80,10 +79,6 @@ export class GalleryComponent {
     this.applyFiltersAndSort();
   }
 
-  onFilterChange() {
-    this.applyFiltersAndSort();
-  }
-
   onSortChange() {
     this.applyFiltersAndSort();
   }
@@ -91,22 +86,13 @@ export class GalleryComponent {
   applyFiltersAndSort() {
     let filtered = [...this.allPaintings];
 
-    // Apply search filter
+    // Apply search filter (title and artist)
     if (this.searchTerm.trim()) {
       const search = this.searchTerm.toLowerCase();
       filtered = filtered.filter(p => 
         p.title?.toLowerCase().includes(search) || 
         p.artist?.toLowerCase().includes(search)
       );
-    }
-
-    // Apply filter
-    if (this.selectedFilter === 'recent') {
-      // Filter by recent (you can customize this logic)
-      filtered = filtered.slice(0, 20);
-    } else if (this.selectedFilter === 'favorites') {
-      // Filter favorites (placeholder - you can add favorites logic)
-      filtered = filtered.slice(0, 10);
     }
 
     // Apply sort

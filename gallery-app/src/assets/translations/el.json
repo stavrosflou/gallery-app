@@ -21,6 +21,7 @@
   "image": {
     "artist": "Καλλιτέχνης:",
     "year": "Έτος:",
+    "material": "Υλικό:",
     "description": "Περιγραφή:",
     "dimensions": "Διαστάσεις:"
   },

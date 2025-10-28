@@ -1,9 +1,11 @@
 import pandas as pd
 import os
+import random
 from django.http import JsonResponse
 from django.conf import settings
 
-def gallery_view(request, id=None):
+def _build_gallery(request):
+    """Helper function to build the complete gallery list."""
     base_dir = settings.MEDIA_ROOT
     media_url = request.build_absolute_uri(settings.MEDIA_URL)
 
@@ -69,8 +71,6 @@ def gallery_view(request, id=None):
                     "artist": "",
                     "year": "",
                     "dimensions": "",
-                    "cost": "",
-                    "price_50": "",
                     "materials": "",
                     "number": image_number
                 })
@@ -78,6 +78,28 @@ def gallery_view(request, id=None):
 
             # image_number increment removed — we derive number per-file above
     gallery.sort(key=lambda x: x['number'])
+    
+    # Replace empty strings with appropriate default values
+    for item in gallery:
+        if not item.get('title') or item['title'].strip() == '':
+            item['title'] = 'Untitled'
+        if not item.get('description') or item['description'].strip() == '':
+            item['description'] = 'No description available'
+        if not item.get('artist') or item['artist'].strip() == '':
+            item['artist'] = 'Unknown artist'
+        if not item.get('year') or item['year'].strip() == '':
+            item['year'] = 'Unknown year'
+        if not item.get('dimensions') or item['dimensions'].strip() == '':
+            item['dimensions'] = 'Unknown dimensions'
+        if not item.get('materials') or item['materials'].strip() == '':
+            item['materials'] = 'Unknown materials'
+    
+    return gallery
+
+def gallery_view(request, id=None):
+    """Return all gallery images or a specific image by ID."""
+    gallery = _build_gallery(request)
+    
     if id:
         item = next((x for x in gallery if x['id'] == str(id)), None)
         if item:
@@ -85,3 +107,14 @@ def gallery_view(request, id=None):
         return JsonResponse({'detail': 'Not found'}, status=404)
 
     return JsonResponse(gallery, safe=False)
+
+def random_gallery_view(request):
+    """Return 7 random images from the gallery."""
+    gallery = _build_gallery(request)
+    
+    # Select up to 7 random images
+    count = min(7, len(gallery))
+    random_images = random.sample(gallery, count) if count > 0 else []
+    
+    return JsonResponse(random_images, safe=False)
+

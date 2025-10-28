@@ -21,6 +21,7 @@
   "image": {
     "artist": "Artist:",
     "year": "Year:",
+    "material": "Material:",
     "description": "Description:",
     "dimensions": "Dimensions:"
   },

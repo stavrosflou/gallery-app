@@ -1,10 +1,7 @@
-sort by artist ,year, iliko  {}
 vale send imale sto sigkekrimeno
-HANDLE NULL VALUES
 sto footer 
 vale mail sou je mail gallery ,phone 96093640
 diefthisi actual gallery Trikoupi 89A old town Nicosia
 sase css gia tilefono
- heading meni opos ehei kame ena home page page me random photos sliding  je tab na se pernni sto paintings
 
 OPTIMIZE APP

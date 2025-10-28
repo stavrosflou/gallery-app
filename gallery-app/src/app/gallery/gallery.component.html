@@ -16,7 +16,7 @@
       <input 
         type="text" 
         class="search-input" 
-        [placeholder]="'gallery.search' | translate"
+        placeholder="Search title and artist"
         [(ngModel)]="searchTerm"
         (input)="onSearchChange()"
       />
@@ -26,20 +26,6 @@
     </div>
 
     <div class="controls-right">
-      <div class="filter-container">
-        <label for="filter">{{ 'gallery.filter' | translate }}</label>
-        <select 
-          id="filter" 
-          class="filter-select"
-          [(ngModel)]="selectedFilter"
-          (change)="onFilterChange()"
-        >
-          <option value="all">{{ 'gallery.filterAll' | translate }}</option>
-          <option value="recent">{{ 'gallery.filterRecent' | translate }}</option>
-          <option value="favorites">{{ 'gallery.filterFavorites' | translate }}</option>
-        </select>
-      </div>
-
       <div class="sort-container">
         <label for="sort">{{ 'gallery.sortBy' | translate }}</label>
         <select 
@@ -48,7 +34,7 @@
           [(ngModel)]="selectedSort"
           (change)="onSortChange()"
         >
-          <option value="default">{{ 'gallery.sortDefault' | translate }}</option>
+          <option value="" disabled selected hidden>Select</option>
           <option value="title">{{ 'gallery.sortTitle' | translate }}</option>
           <option value="artist">{{ 'gallery.sortArtist' | translate }}</option>
           <option value="year">{{ 'gallery.sortYear' | translate }}</option>
