@@ -7,7 +7,7 @@
         <div class="carousel-slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
           <div class="carousel-slide" *ngFor="let painting of featuredPaintings">
             <div class="slide-content" (click)="viewPainting(painting.id)">
-              <img [src]="painting.src" [alt]="painting.title" class="slide-image">
+              <img [src]="painting.url" [alt]="painting.title" class="slide-image">
               <!-- <div class="slide-info">
                 <h2 class="slide-title">{{ painting.title }}</h2>
                 <p class="slide-artist">{{ painting.artist }}</p>

@@ -23,10 +23,16 @@ import { TranslatePipe } from '../pipes/translate.pipe';
 })
 export class GalleryComponent {
   paintings: {
-    src: string;
+    id: number;
+    url: string;
     title: string;
     description: string;
     artist: string;
+    year?: number;
+    dimensions?: string;
+    materials?: string;
+    price?: number;
+    ownershipCost?: number;
   }[] = [];
 
   allPaintings: any[] = []; // Store original data
@@ -46,15 +52,19 @@ export class GalleryComponent {
     // Check if splash was already shown in this tab session
     // const splashShown = sessionStorage.getItem('splash-shown');
     
-    // Fetch images from backend
+    // Fetch images from local JSON data
     this.galleryService.getImages().subscribe((data) => {
       this.allPaintings = data.map((item: any) => ({
         id: item.id,
-        src: item.url,
+        url: item.url,
         title: item.title,
         description: item.description,
         artist: item.artist,
         year: item.year,
+        dimensions: item.dimensions,
+        materials: item.materials,
+        price: item.price,
+        ownershipCost: item.ownershipCost
       }));
       this.paintings = [...this.allPaintings];
       this.applyFiltersAndSort();

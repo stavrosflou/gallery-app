@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.galleryService.getRandomImages().subscribe((data) => {
       this.featuredPaintings = data.map((item: any) => ({
         id: item.id,
-        src: item.url,
+        url: item.url,
         title: item.title,
         artist: item.artist,
       }));

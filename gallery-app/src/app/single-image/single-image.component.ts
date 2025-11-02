@@ -14,7 +14,7 @@ import { PopupComponent } from '../popup/popup.component';
   styleUrls: ['./single-image.component.css']
 })
 export class SingleImageComponent implements OnInit {
-  image: { id: number; src: string; title: string; description?: string; artist?: string; year?: string | number; dimensions?: string; materials?: string; width?: number; height?: number } | null = null;
+  image: { id: number; src: string; title: string; description?: string; artist?: string; year?: string | number; dimensions?: string; materials?: string; width?: number; height?: number; price?: number; ownershipCost?: number } | null = null;
   isPopupOpen = false;
 
   constructor(
@@ -75,6 +75,8 @@ export class SingleImageComponent implements OnInit {
           materials: item.materials ?? undefined,
           width: widthValue,
           height: heightValue,
+          price: item.price ?? undefined,
+          ownershipCost: item.ownershipCost ?? undefined,
         };
       });
     });

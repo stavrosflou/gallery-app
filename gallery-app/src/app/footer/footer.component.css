@@ -5,3 +5,23 @@
   padding: 15px 0;
   font-size: 14px;
 }
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 10px 5px;
+    font-size: 12px;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 11px;
+    padding: 8px 5px;
+  }
+}
