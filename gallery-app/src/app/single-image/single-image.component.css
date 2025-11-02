@@ -199,6 +199,33 @@
   margin-bottom: 12px;
   white-space: pre-wrap; /* preserve line breaks in description text */
 }
+
+.info-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #1a1a1a 60%, #2d2d2d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  align-self: center;
+}
+
+.info-button:hover {
+  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.info-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
 .modal {
   display: flex;
   justify-content: center;
@@ -451,4 +478,15 @@
 
 :host-context(body.dark-mode) .back-to-paintings:hover {
   background: linear-gradient(135deg, #404040 60%, #555 100%);
+}
+
+:host-context(body.dark-mode) .info-button {
+  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(body.dark-mode) .info-button:hover {
+  background: linear-gradient(135deg, #404040 60%, #555 100%);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }

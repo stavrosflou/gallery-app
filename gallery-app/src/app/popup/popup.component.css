@@ -22,7 +22,8 @@
 }
 
 .popup {
-  width: 400px;
+  width: 500px;
+  max-width: calc(100vw - 40px);
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -46,22 +47,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 20px 24px;
   background: #f5f5f5;
   border-bottom: 1px solid #ddd;
 }
 
-.popup-icon {
+.popup-title {
   font-size: 1.5rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #333;
-  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
 }
 
 .popup-close {
@@ -87,57 +82,172 @@
 }
 
 .popup-body {
-  padding: 24px 20px;
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 24px;
 }
 
-.popup-message {
-  font-size: 1rem;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #333;
-  line-height: 1.6;
-  text-align: center;
-  margin: 0;
-  word-break: break-word;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 .popup-footer {
-  padding: 16px 20px;
-  background: #f5f5f5;
-  border-top: 1px solid #ddd;
   display: flex;
-  justify-content: center;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 8px;
 }
 
-.popup-ok-button {
-  background: #333;
-  color: #fff;
+.cancel-button,
+.submit-button {
+  padding: 12px 24px;
   border: none;
-  padding: 10px 32px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-  min-width: 100px;
+  transition: all 0.2s;
 }
 
-.popup-ok-button:hover {
-  background: #555;
+.cancel-button {
+  background: #e5e5e5;
+  color: #333;
+}
+
+.cancel-button:hover {
+  background: #d0d0d0;
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #1a1a1a 60%, #2d2d2d 100%);
+  color: #fff;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2d2d2d 60%, #404040 100%);
   transform: translateY(-1px);
 }
 
-.popup-ok-button:active {
-  background: #222;
-  transform: translateY(0);
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dark Mode */
+:host-context(body.dark-mode) .popup {
+  background: #2d2d2d;
+  border-color: #555;
+}
+
+:host-context(body.dark-mode) .popup-header {
+  background: #1a1a1a;
+  border-bottom-color: #555;
+}
+
+:host-context(body.dark-mode) .popup-title {
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .popup-close {
+  color: #aaa;
+}
+
+:host-context(body.dark-mode) .popup-close:hover {
+  background: #404040;
+  color: #fff;
+}
+
+:host-context(body.dark-mode) .form-group label {
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .form-group input,
+:host-context(body.dark-mode) .form-group textarea {
+  background: #1a1a1a;
+  border-color: #555;
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .form-group input:focus,
+:host-context(body.dark-mode) .form-group textarea:focus {
+  border-color: #aaa;
+}
+
+:host-context(body.dark-mode) .cancel-button {
+  background: #404040;
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .cancel-button:hover {
+  background: #555;
+}
+
+:host-context(body.dark-mode) .submit-button {
+  background: linear-gradient(135deg, #e5e7eb 60%, #f5f5f5 100%);
+  color: #1a1a1a;
+}
+
+:host-context(body.dark-mode) .submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f5f5f5 60%, #ffffff 100%);
 }
 
 /* Responsive */
 @media (max-width: 600px) {
   .popup {
-    width: calc(100vw - 40px);
-    max-width: 400px;
+    width: calc(100vw - 32px);
+  }
+
+  .popup-header {
+    padding: 16px 20px;
+  }
+
+  .popup-title {
+    font-size: 1.3rem;
+  }
+
+  .popup-body {
+    padding: 20px;
+  }
+
+  .popup-footer {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-button,
+  .submit-button {
+    width: 100%;
   }
 }

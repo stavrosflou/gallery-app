@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Dropdown, DropdownModule } from 'primeng/dropdown';
 import { SplitButtonModule } from 'primeng/splitbutton';
-import { PopupService } from '../services/popup.service';
 import { TranslationService } from '../services/translation.service';
 import { TranslatePipe } from '../pipes/translate.pipe';
 
@@ -24,7 +23,6 @@ export class HeaderComponent {
   @ViewChild('dropdown') dropdown!: Dropdown;
   
   constructor(
-    private popupService: PopupService,
     private translationService: TranslationService
   ) {
     this.currentLanguageCode = this.translationService.getCurrentLanguage();

@@ -170,8 +170,8 @@
   color: #e5e7eb;
 }
 
-:host-context(body.dark-mode) .carousel {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+:host-context(body.dark-mode) .slide-content {
+  background: #1a1a1a;
 }
 
 :host-context(body.dark-mode) .carousel-arrow {

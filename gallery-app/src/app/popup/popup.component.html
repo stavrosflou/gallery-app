@@ -1,17 +1,51 @@
-<div class="popup-backdrop" *ngIf="message" (click)="close()">
-  <div class="popup" (click)="$event.stopPropagation()">
+<div class="popup-backdrop" *ngIf="isOpen">
+  <div class="popup">
     <div class="popup-header">
-        <span *ngIf="message.type === 'success'">✓</span>
-        <span *ngIf="message.type === 'error'">✕</span>
-        <span *ngIf="message.type === 'info'"></span>
-        <span *ngIf="message.type === 'warning'">⚠</span>
+      <h2 class="popup-title">{{ 'popup.title' | translate }}</h2>
       <button class="popup-close" (click)="close()">&times;</button>
     </div>
     <div class="popup-body">
-      <p class="popup-message">{{ message.message }}</p>
-    </div>
-    <div class="popup-footer">
-      <button class="popup-ok-button" (click)="close()">OK</button>
+      <form (ngSubmit)="onSubmit()" class="contact-form">
+        <div class="form-group">
+          <label for="name">{{ 'popup.name' | translate }}</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="name" 
+            name="name"
+            [placeholder]="'popup.namePlaceholder' | translate"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">{{ 'popup.email' | translate }}</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="email" 
+            name="email"
+            [placeholder]="'popup.emailPlaceholder' | translate"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="message">{{ 'popup.message' | translate }}</label>
+          <textarea 
+            id="message" 
+            [(ngModel)]="message" 
+            name="message"
+            [placeholder]="'popup.messagePlaceholder' | translate"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <div class="popup-footer">
+          <button type="button" class="cancel-button" (click)="close()">{{ 'popup.cancel' | translate }}</button>
+          <button type="submit" class="submit-button" [disabled]="isSubmitting">
+            {{ isSubmitting ? ('popup.sending' | translate) : ('popup.send' | translate) }}
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

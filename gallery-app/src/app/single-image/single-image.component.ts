@@ -4,21 +4,23 @@ import { GalleryService } from '../services/gallery.service';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../pipes/translate.pipe';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-single-image',
   standalone: true,
-  imports: [CommonModule, TranslatePipe],
+  imports: [CommonModule, TranslatePipe, PopupComponent],
   templateUrl: './single-image.component.html',
   styleUrls: ['./single-image.component.css']
 })
 export class SingleImageComponent implements OnInit {
   image: { id: number; src: string; title: string; description?: string; artist?: string; year?: string | number; dimensions?: string; materials?: string; width?: number; height?: number } | null = null;
+  isPopupOpen = false;
 
   constructor(
     private route: ActivatedRoute,
     private galleryService: GalleryService,
-    private location: Location // Add this
+    private location: Location
   ) {}
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
@@ -109,6 +111,14 @@ getScaledHeight(): number {
   const maxSize = 80;
   const ratio = this.image.width ? this.image.height / Math.max(this.image.width, this.image.height) : 1;
   return maxSize * ratio;
+}
+
+showPopup() {
+  this.isPopupOpen = true;
+}
+
+closePopup() {
+  this.isPopupOpen = false;
 }
 
 }

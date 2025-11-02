@@ -23,12 +23,25 @@
     "year": "Year:",
     "material": "Material:",
     "description": "Description:",
-    "dimensions": "Dimensions:"
+    "dimensions": "Dimensions:",
+    "sendMessage": "Send Message"
   },
   "footer": {
     "rights": "© 2024 Art Gallery. All rights reserved."
   },
   "popup": {
-    "ok": "OK"
+    "title": "Send us a message",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Your message...",
+    "cancel": "Cancel",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "fillAllFields": "Please fill in all fields",
+    "successMessage": "Message sent successfully!",
+    "errorMessage": "Failed to send message. Please try again."
   }
 }
