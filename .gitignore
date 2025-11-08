@@ -11,7 +11,8 @@ Dockerfile
 deploy/
 DEPLOYMENT_GUIDE.md
 
-# Old deployment scripts (replaced by deploy.ps1)
+# Deployment scripts
+deploy.ps1
 backend_build.ps1
 frontend_build.ps1
 deploy-to-github.ps1
