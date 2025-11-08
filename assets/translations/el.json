@@ -1,0 +1,59 @@
+{
+  "header": {
+    "title": "Central Gallery",
+    "home": "Αρχική",
+    "paintings": "Πίνακες",
+    "about": "Σχετικά",
+    "contact": "Επικοινωνία"
+  },
+  "gallery": {
+    "search": "Αναζήτηση με τίτλο και καλλιτέχνη",
+    "filter": "Φίλτρα:",
+    "filterAll": "Όλα",
+    "filterRecent": "Πρόσφατα",
+    "filterFavorites": "Αγαπημένα",
+    "sortBy": "Ταξινόμηση:",
+    "sortDefault": "Προεπιλογή",
+    "sortTitle": "Τίτλος",
+    "sortArtist": "Καλλιτέχνης",
+    "sortYear": "Έτος"
+  },
+  "image": {
+    "artist": "Καλλιτέχνης:",
+    "year": "Έτος:",
+    "material": "Υλικό:",
+    "description": "Περιγραφή:",
+    "dimensions": "Διαστάσεις:",
+    "sendMessage": "Αποστολή Μηνύματος",
+    "unknown": "Άγνωστο"
+  },
+  "footer": {
+    "rights": "© 2024 Πινακοθήκη Τέχνης. Όλα τα δικαιώματα διατηρούνται."
+  },
+  "popup": {
+    "title": "Στείλτε μας μήνυμα",
+    "name": "Όνομα",
+    "namePlaceholder": "Το όνομά σας",
+    "email": "Email",
+    "phone": "Τηλέφωνο",
+    "phonePlaceholder": "Ο αριθμός τηλεφώνου σας",
+    "message": "Μήνυμα",
+    "messagePlaceholder": "Το μήνυμά σας...",
+    "cancel": "Ακύρωση",
+    "send": "Αποστολή Μηνύματος",
+    "sending": "Αποστολή...",
+    "fillAllFields": "Παρακαλώ συμπληρώστε όλα τα πεδία",
+    "successMessage": "Το μήνυμα στάλθηκε επιτυχώς!",
+    "errorMessage": "Αποτυχία αποστολής μηνύματος. Παρακαλώ δοκιμάστε ξανά.",
+    "nameRequired": "Το όνομα είναι υποχρεωτικό",
+    "nameMinLength": "Το όνομα πρέπει να έχει τουλάχιστον 2 χαρακτήρες",
+    "emailRequired": "Το email είναι υποχρεωτικό",
+    "emailInvalid": "Παρακαλώ εισάγετε έγκυρη διεύθυνση email",
+    "phoneRequired": "Το τηλέφωνο είναι υποχρεωτικό",
+    "phoneInvalid": "Παρακαλώ εισάγετε έγκυρο αριθμό τηλεφώνου",
+    "messageRequired": "Το μήνυμα είναι υποχρεωτικό",
+    "messageMinLength": "Το μήνυμα πρέπει να έχει τουλάχιστον 10 χαρακτήρες",
+    "tooFastError": "Παρακαλώ αφιερώστε λίγο χρόνο για να συμπληρώσετε τη φόρμα.",
+    "waitBetweenSubmissionsError": "Παρακαλώ περιμένετε πριν υποβάλετε ξανά."
+  }
+}
