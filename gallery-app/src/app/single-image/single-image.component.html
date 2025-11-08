@@ -6,29 +6,34 @@
     <!-- Image Section with Title and Artist Above -->
     <div class="image-section">
       <div class="image-header">
-        <div class="title-left">{{ image.title }}</div>
-        <div class="artist-right">{{ image.artist }}</div>
+        <div class="title-left">{{ image.title || ('image.unknown' | translate) }}</div>
+        <div class="artist-right">{{ image.artist || ('image.unknown' | translate) }}</div>
       </div>
       <div class="image-wrapper" (click)="openModal()">
-        <img [src]="image.src" [alt]="image.title" />
+        <img [src]="image.src" [alt]="image.title || ('image.unknown' | translate)" />
       </div>
     </div>
 
     <!-- Description Section -->
     <div class="description-side">
       <div class="thumbnail-container">
-        <img [src]="image.src" [alt]="image.title" class="description-thumbnail" />
-        <!-- Visual dimension lines -->
+        <img [src]="image.src" [alt]="image.title || ('image.unknown' | translate)" class="description-thumbnail" />
+        <!-- Visual dimension lines with actual measurements -->
         <div class="dimension-lines">
-          <div class="dimension-width"></div>
-          <div class="dimension-height"></div>
+          <div class="dimension-width">
+            <span class="dimension-label" *ngIf="getFormattedWidth()">{{ getFormattedWidth() }}</span>
+          </div>
+          <div class="dimension-height">
+            <span class="dimension-label-vertical" *ngIf="getFormattedHeight()">{{ getFormattedHeight() }}</span>
+          </div>
         </div>
       </div>
       <div class="image-description">
-        <div class="meta"><strong>{{ 'image.year' | translate }}</strong> {{ image.year }}</div>
-        <div class="meta" *ngIf="image.materials"><strong>{{ 'image.material' | translate }}</strong> {{ image.materials }}</div>
+        <div class="meta"><strong>{{ 'image.year' | translate }}</strong> {{ image.year || ('image.unknown' | translate) }}</div>
+        <div class="meta" *ngIf="image.materials || true"><strong>{{ 'image.material' | translate }}</strong> {{ image.materials || ('image.unknown' | translate) }}</div>
+        <div class="meta" *ngIf="getFormattedDimensions()"><strong>{{ 'image.dimensions' | translate }}</strong> {{ getFormattedDimensions() }}</div>
         <div class="meta"><strong>{{ 'image.description' | translate }}</strong></div>
-        <div class="meta-text">{{ image.description }}</div>
+        <div class="meta-text">{{ image.description || ('image.unknown' | translate) }}</div>
       </div>
       <button class="info-button" (click)="showPopup()">Send Message</button>
     </div>
@@ -45,8 +50,12 @@
   <!-- X button -->
   <span class="close" (click)="closeModal(); $event.stopPropagation()">&times;</span>
   <!-- Zoomed Image -->
-  <img class="modal-content" [src]="image?.src" [alt]="image?.title" />
+  <img class="modal-content" [src]="image?.src" [alt]="image?.title || ('image.unknown' | translate)" />
 </div>
 
 <!-- Contact Form Popup -->
-<app-popup [isOpen]="isPopupOpen" (closePopup)="closePopup()"></app-popup>
+<app-popup 
+  [isOpen]="isPopupOpen" 
+  [paintingInfo]="getPaintingInfo()"
+  (closePopup)="closePopup()">
+</app-popup>

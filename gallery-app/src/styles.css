@@ -1,7 +1,19 @@
 body{
     background-color: rgb(252, 252, 252);
     margin: 0;
-    padding-top: 90px; /* Space for fixed header */
+    padding: 0;
+    min-height: 100vh;
+    /* Prevent zoom on iOS when focusing on inputs */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Dark Mode */
@@ -88,6 +100,47 @@ body.dark-mode .painting p {
     color: #e5e7eb !important;
 }
 
+/* Dark Mode Pagination Styles */
+body.dark-mode .pagination-container {
+    background: #1a1a1a;
+}
+
+body.dark-mode .pagination-btn {
+    background: #2d2d2d;
+    color: #e5e7eb;
+    border-color: #444;
+}
+
+body.dark-mode .pagination-btn:hover:not(:disabled) {
+    background: #404040;
+    border-color: #666;
+}
+
+body.dark-mode .pagination-btn:disabled {
+    color: #555;
+    background: #1a1a1a;
+    border-color: #333;
+}
+
+body.dark-mode .pagination-btn.active {
+    background: #e5e7eb;
+    color: #1a1a1a;
+    border-color: #e5e7eb;
+}
+
+body.dark-mode .pagination-btn.active:hover {
+    background: #f5f5f5;
+    border-color: #f5f5f5;
+}
+
+body.dark-mode .page-info {
+    color: #aaa;
+}
+
+body.dark-mode .results-count {
+    color: #999;
+}
+
 body.dark-mode .single-image-container {
     background: #1a1a1a;
 }
@@ -128,6 +181,26 @@ img {
     max-width: 300px;
     margin-bottom: 12px;
   }
+
+  /* Improve touch interactions */
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Prevent text selection on touch */
+  .painting, .slide-content, .carousel-arrow, .dot {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Improve scrolling performance */
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (max-width: 480px) {
@@ -141,5 +214,23 @@ img {
     height: 200px;
     max-width: 250px;
     margin-bottom: 10px;
+  }
+
+  /* Ensure minimum touch target size (44px) */
+  button, .painting, .carousel-arrow, .dot {
+    min-height: 44px;
+    min-width: 44px;
+  }
+.nav-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 25px;
+  min-width: 44px;
+}
+  /* Improve text readability on small screens */
+  p, span, div {
+    line-height: 1.4;
   }
 }

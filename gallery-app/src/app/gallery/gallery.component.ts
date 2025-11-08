@@ -36,8 +36,14 @@ export class GalleryComponent {
   }[] = [];
 
   allPaintings: any[] = []; // Store original data
+  filteredPaintings: any[] = []; // Store filtered data
   searchTerm: string = '';
   selectedSort: string = '';
+  
+  // Pagination properties
+  currentPage: number = 1;
+  itemsPerPage: number = 20;
+  totalPages: number = 0;
   
   // Splash screen properties
   // showSplash: boolean = false;
@@ -66,7 +72,6 @@ export class GalleryComponent {
         price: item.price,
         ownershipCost: item.ownershipCost
       }));
-      this.paintings = [...this.allPaintings];
       this.applyFiltersAndSort();
       
       // Show splash only once per tab session
@@ -86,10 +91,12 @@ export class GalleryComponent {
   }
 
   onSearchChange() {
+    this.currentPage = 1; // Reset to first page when searching
     this.applyFiltersAndSort();
   }
 
   onSortChange() {
+    this.currentPage = 1; // Reset to first page when sorting
     this.applyFiltersAndSort();
   }
 
@@ -114,7 +121,64 @@ export class GalleryComponent {
       filtered.sort((a, b) => (a.year || 0) - (b.year || 0));
     }
 
-    this.paintings = filtered;
+    this.filteredPaintings = filtered;
+    this.totalPages = Math.ceil(this.filteredPaintings.length / this.itemsPerPage);
+    
+    // Ensure current page is valid
+    if (this.currentPage > this.totalPages && this.totalPages > 0) {
+      this.currentPage = this.totalPages;
+    }
+    
+    this.updateCurrentPagePaintings();
+  }
+
+  updateCurrentPagePaintings() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paintings = this.filteredPaintings.slice(startIndex, endIndex);
+  }
+
+  // Pagination methods
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updateCurrentPagePaintings();
+      window.scrollTo(0, 0); // Scroll to top when changing pages
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.goToPage(this.currentPage + 1);
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.goToPage(this.currentPage - 1);
+    }
+  }
+
+  get pageNumbers(): number[] {
+    const pages: number[] = [];
+    const maxVisiblePages = 5;
+    
+    if (this.totalPages <= maxVisiblePages) {
+      // Show all pages if total is small
+      for (let i = 1; i <= this.totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show smart pagination
+      const start = Math.max(1, this.currentPage - 2);
+      const end = Math.min(this.totalPages, start + maxVisiblePages - 1);
+      
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
   }
 
   get rows() {

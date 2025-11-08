@@ -2,13 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
-  min-height: calc(100vh - 90px);
+  padding: 50px 20px 20px 20px; /* Account for fixed header */
+  min-height: calc(100vh - 120px); /* Ensure container takes full height minus header/footer */
+  flex: 1;
 }
 
 .carousel-section {
   width: 100%;
   max-width: 1200px;
+}
+
+/* Mobile-only quote section - hidden by default */
+.mobile-quote-section {
+  display: none;
 }
 
 .carousel-title {
@@ -17,7 +23,7 @@
   font-family: 'Georgia', serif;
   color: #1a1a1a;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   letter-spacing: 2px;
 }
 
@@ -47,7 +53,7 @@
 .slide-content {
   position: relative;
   width: 100%;
-  height: 450px;
+  height: 450px; /* Reverted back to original desktop size */
   cursor: pointer;
   overflow: hidden;
   background: #ffffff;
@@ -99,13 +105,13 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.9); /* Changed to white background */
   backdrop-filter: blur(10px);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  font-size: 1.8rem;
-  width: 56px;
-  height: 56px;
+  color: #1a1a1a; /* Changed to black arrows */
+  border: none; /* Removed border/outline */
+  font-size: 1.8rem; /* Reverted back to original desktop size */
+  width: 56px; /* Reverted back to original desktop size */
+  height: 56px; /* Reverted back to original desktop size */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,14 +119,11 @@
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 10;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-arrow:hover {
-  background: rgba(0, 0, 0, 0.7);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 1); /* Solid white on hover */
   transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-arrow:active {
@@ -175,24 +178,58 @@
 }
 
 :host-context(body.dark-mode) .carousel-arrow {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: white;
+  background: #1a1a1a; /* Same background as dark mode slide content */
+  border: none; /* Removed border/outline */
+  color: white; /* White arrows for contrast */
 }
 
 :host-context(body.dark-mode) .carousel-arrow:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: #1a1a1a; /* Keep same dark background on hover */
+  color: white; /* White arrows on hover */
+}
+
+/* Dark mode for mobile quote section */
+:host-context(body.dark-mode) .quote-text {
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .quote-author {
+  color: #9ca3af;
+}
+
+:host-context(body.dark-mode) .cta-text {
+  color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .explore-link {
+  color: #e5e7eb;
+  border-color: #e5e7eb;
+}
+
+:host-context(body.dark-mode) .explore-link:hover {
+  background: #e5e7eb;
+  color: #1a1a1a;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+  .home-container {
+    padding: 80px 12px 15px 12px;
+    min-height: calc(100vh - 140px); /* Account for mobile header height */
+  }
+
   .carousel-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
   }
 
   .slide-content {
-    height: 300px;
+    height: 320px; /* Increased from 280px for slightly bigger mobile paintings */
+  }
+
+  .slide-image {
+    object-fit: contain;
   }
 
   .slide-title {
@@ -204,9 +241,9 @@
   }
 
   .carousel-arrow {
-    font-size: 1.4rem;
-    width: 48px;
-    height: 48px;
+    font-size: 1.2rem; /* Reduced from 1.4rem */
+    width: 30px; /* Reduced from 48px */
+    height: 30px; /* Reduced from 48px */
   }
 
   .carousel-arrow-left {
@@ -215,5 +252,173 @@
 
   .carousel-arrow-right {
     right: 15px;
+  }
+
+  .carousel-dots {
+    bottom: 15px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 1px;
+    height: 1px;
+  }
+
+  /* Show mobile quote section */
+  .mobile-quote-section {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 115px;
+    text-align: center;
+  }
+
+  .gallery-quote {
+    margin: 0 0 30px 0;
+    padding: 0 20px;
+  }
+
+  .quote-text {
+    font-size: 1.3rem;
+    font-weight: 300;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    color: #1a1a1a;
+    line-height: 1.6;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
+  }
+
+  .quote-author {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+  }
+
+  .mobile-cta {
+    margin-top: 25px;
+  }
+
+  .cta-text {
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+  }
+
+  .explore-link {
+    background: transparent;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    padding: 12px 24px;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .explore-link:hover {
+    background: #1a1a1a;
+    color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 70px 8px 10px 8px;
+    min-height: calc(100vh - 130px); /* Account for small mobile header height */
+  }
+
+  .carousel-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+  }
+
+  .slide-content {
+    height: 280px; /* Increased from 240px for bigger small mobile paintings */
+  }
+
+  .slide-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .slide-artist {
+    font-size: 1rem;
+  }
+
+  .carousel-arrow {
+    font-size: 1rem; /* Reduced from 1.2rem */
+    width: 30px; /* Reduced from 48px */
+    height: 30px; /* Reduced from 48px */
+  }
+
+  .carousel-arrow-left {
+    left: 10px;
+  }
+
+  .carousel-arrow-right {
+    right: 10px;
+  }
+
+  .carousel-dots {
+    bottom: 10px;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 1px;
+    height: 1px;
+  }
+
+  /* Improve touch targets */
+  .carousel-arrow {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .dot {
+    min-width: 10px;
+    min-height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mobile quote section for small phones */
+  .mobile-quote-section {
+    display: block;
+    margin-top: 115px;
+  }
+
+  .gallery-quote {
+    padding: 0 15px;
+    margin-bottom: 25px;
+  }
+
+  .quote-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .quote-author {
+    font-size: 0.9rem;
+  }
+
+  .cta-text {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .explore-link {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 }

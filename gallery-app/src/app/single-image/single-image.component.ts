@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GalleryService } from '../services/gallery.service';
 import { Location } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -19,6 +19,7 @@ export class SingleImageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private galleryService: GalleryService,
     private location: Location
   ) {}
@@ -29,7 +30,6 @@ export class SingleImageComponent implements OnInit {
 
       this.galleryService.getImageById(id).subscribe((item) => {
         const src = item.url ?? item.src ?? null;
-        console.log('Fetched image item:', item); // Debug log
         // Normalize year (strip trailing .0 if present)
         let rawYear: any = item.year ?? item.date ?? undefined;
         let yearValue: string | number | undefined = undefined;
@@ -39,21 +39,24 @@ export class SingleImageComponent implements OnInit {
           yearValue = s.endsWith('.0') ? s.slice(0, -2) : s;
         }
 
-        // Normalize dimensions: replace Greek 'χ' or multiplication sign with ASCII 'x'
+        // Normalize dimensions: replace any separator with 'x'
         let rawDim: any = item.dimensions ?? item.size ?? undefined;
         let dimValue: string | undefined = undefined;
         let widthValue: number | undefined = undefined;
         let heightValue: number | undefined = undefined;
         
         if (rawDim !== undefined && rawDim !== null) {
+          // Replace all possible separators with 'x'
           dimValue = String(rawDim)
             .replace(/×/g, 'x')      // Unicode multiplication sign
             .replace(/χ/g, 'x')      // Greek small letter chi
-            .replace(/\s*x\s*/gi, ' x ') // normalize spacing around x
+            .replace(/\*/g, 'x')     // Asterisk
+            .replace(/r/g, 'x')      // Letter r
+            .replace(/\s*x\s*/gi, 'x') // normalize spacing around x
             .trim();
           
-          // Parse width and height from dimensions (e.g., "100 x 80")
-          const parts = dimValue.split(/\s*x\s*/i);
+          // Parse width and height from dimensions (e.g., "100x80")
+          const parts = dimValue.split('x');
           if (parts.length === 2) {
             const w = parseFloat(parts[0]);
             const h = parseFloat(parts[1]);
@@ -67,12 +70,12 @@ export class SingleImageComponent implements OnInit {
         this.image = {
           id: Number(item.id),
           src,
-          title: item.title ?? `Painting ${item.id}`,
-          description: item.description ?? `A beautiful painting number ${item.id}.`,
-          artist: item.artist ?? item.creator ?? 'Unknown artist',
+          title: item.title || undefined,
+          description: item.description || undefined,
+          artist: item.artist || item.creator || undefined,
           year: yearValue,
           dimensions: dimValue,
-          materials: item.materials ?? undefined,
+          materials: item.materials || undefined,
           width: widthValue,
           height: heightValue,
           price: item.price ?? undefined,
@@ -96,7 +99,7 @@ closeModal() {
 }
 
 goBackToPaintings() {
-  this.location.back();
+  this.router.navigate(['/paintings']);
 }
 
 getScaledWidth(): number {
@@ -121,6 +124,31 @@ showPopup() {
 
 closePopup() {
   this.isPopupOpen = false;
+}
+
+getPaintingInfo() {
+  if (!this.image) return undefined;
+  
+  return {
+    title: this.image.title || '',
+    artist: this.image.artist || '',
+    id: this.image.id
+  };
+}
+
+getFormattedWidth(): string {
+  return this.image?.width ? `${this.image.width}` : '';
+}
+
+getFormattedHeight(): string {
+  return this.image?.height ? `${this.image.height}` : '';
+}
+
+getFormattedDimensions(): string {
+  if (this.image?.width && this.image?.height) {
+    return `${this.image.width}x${this.image.height}`;
+  }
+  return this.image?.dimensions || '';
 }
 
 }

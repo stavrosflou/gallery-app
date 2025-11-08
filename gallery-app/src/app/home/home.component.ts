@@ -62,4 +62,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   viewPainting(id: number) {
     this.router.navigate(['/paintings', id]);
   }
+
+  goToGallery() {
+    this.router.navigate(['/paintings']);
+  }
 }

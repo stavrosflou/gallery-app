@@ -1,5 +1,6 @@
 .gallery-container {
   background: rgb(255, 255, 255);
+  padding-top: 90px; /* Account for fixed header */
 }
 
 /* Splash Screen Styles */
@@ -210,6 +211,82 @@
   background: rgb(255, 255, 255);
 }
 
+/* Pagination Styles */
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 16px 48px 16px;
+  background: rgb(255, 255, 255);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.pagination-btn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  background: #f9f9f9;
+  border-color: #eee;
+}
+
+.pagination-btn.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+.pagination-btn.active:hover {
+  background: #555;
+  border-color: #555;
+}
+
+.prev-btn,
+.next-btn {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 40px;
+}
+
+.page-info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.results-count {
+  font-size: 0.8rem;
+  color: #999;
+}
+
 .row {
   display: flex;
   gap: 150px;
@@ -296,45 +373,140 @@
   .controls-bar {
     flex-direction: column;
     padding: 16px;
+    gap: 16px;
   }
 
   .search-container {
+    width: 100%;
     max-width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 14px 50px 14px 16px;
+  }
+
+  .search-icon {
+    right: 16px;
+    width: 20px;
+    height: 20px;
   }
 
   .controls-right {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     gap: 12px;
   }
 
   .sort-container {
-    width: 100%;
-    justify-content: space-between;
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .sort-container label {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
   }
 
   .sort-select {
-    flex: 1;
+    width: 100%;
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 40px 12px 12px;
+  }
+
+  .gallery {
+    padding: 20px 12px 60px 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns for the entire gallery */
+    gap: 16px;
+    justify-items: center;
   }
 
   .row {
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
-    padding: 30px 0; /* Increased padding for mobile too */
-  }
-  
-  .painting {
-    max-width: 90vw;
+    display: contents; /* Makes row transparent, allowing children to participate in parent grid */
   }
   
   .painting-wrapper {
-    padding: 0; /* Consistent with desktop */
+    width: 100%;
+    max-width: 150px; /* Smaller width to fit 2 per row */
+    height: auto;
+    padding: 0;
     margin: 0;
   }
-  
+
+  .painting {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 240px; /* Reduced height for 2-column layout */
+    padding: 12px; /* Reduced padding */
+    /* Remove hover effects on mobile for better performance */
+    transition: none;
+  }
+
+  .painting img {
+    width: 100%;
+    height: 140px; /* Reduced height for 2-column layout */
+    max-width: 130px; /* Smaller max width */
+    object-fit: contain;
+  }
+
+  .painting p {
+    font-size: 0.8rem; /* Smaller text for compact layout */
+    margin: 4px 0; /* Reduced margins */
+    line-height: 1.2; /* Tighter line height */
+  }
+
+  /* Remove hover effects on mobile */
   .painting-wrapper:hover .painting {
-    transform: scale(1.05);
+    transform: none;
+  }
+
+  .painting::before,
+  .painting::after {
+    display: none; /* Hide decorative lines on mobile */
+  }
+
+  /* Add touch-friendly tap effects */
+  .painting:active {
+    background-color: #f5f5f5;
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+  }
+
+  /* Mobile Pagination Styles */
+  .pagination-container {
+    padding: 20px 12px 40px 12px;
+  }
+
+  .pagination {
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination-btn {
+    padding: 10px 8px;
+    font-size: 0.9rem;
+    min-width: 36px;
+    border-radius: 4px;
+  }
+
+  .prev-btn,
+  .next-btn {
+    font-size: 1.1rem;
+    width: 36px;
+    padding: 10px 6px;
+  }
+
+  .page-info {
+    font-size: 0.8rem;
+  }
+
+  .results-count {
+    font-size: 0.75rem;
   }
 }
 

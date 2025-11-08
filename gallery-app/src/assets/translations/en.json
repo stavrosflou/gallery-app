@@ -7,12 +7,12 @@
     "contact": "Contact"
   },
   "gallery": {
-    "search": "Search paintings...",
+    "search": "Search by title and artist",
     "filter": "Filter:",
     "filterAll": "All",
     "filterRecent": "Recent",
     "filterFavorites": "Favorites",
-    "sortBy": "Sort By:",
+    "sortBy": "Sort:",
     "sortDefault": "Default",
     "sortTitle": "Title",
     "sortArtist": "Artist",
@@ -24,7 +24,8 @@
     "material": "Material:",
     "description": "Description:",
     "dimensions": "Dimensions:",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "unknown": "Unknown"
   },
   "footer": {
     "rights": "© 2024 Art Gallery. All rights reserved."
@@ -35,6 +36,8 @@
     "namePlaceholder": "Your name",
     "email": "Email",
     "emailPlaceholder": "your.email@example.com",
+    "phone": "Phone",
+    "phonePlaceholder": "Your phone number",
     "message": "Message",
     "messagePlaceholder": "Your message...",
     "cancel": "Cancel",
@@ -42,6 +45,16 @@
     "sending": "Sending...",
     "fillAllFields": "Please fill in all fields",
     "successMessage": "Message sent successfully!",
-    "errorMessage": "Failed to send message. Please try again."
+    "errorMessage": "Failed to send message. Please try again.",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 2 characters",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Please enter a valid email address",
+    "phoneRequired": "Phone is required",
+    "phoneInvalid": "Please enter a valid phone number",
+    "messageRequired": "Message is required",
+    "messageMinLength": "Message must be at least 10 characters",
+    "tooFastError": "Please take your time filling out the form.",
+    "waitBetweenSubmissionsError": "Please wait before submitting again."
   }
 }

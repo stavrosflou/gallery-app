@@ -16,7 +16,7 @@
       <input 
         type="text" 
         class="search-input" 
-        placeholder="Search title and artist"
+        [placeholder]="'gallery.search' | translate"
         [(ngModel)]="searchTerm"
         (input)="onSearchChange()"
       />
@@ -56,14 +56,54 @@
           (click)="openInAppTab(painting)"
           tabindex="0"
         > 
-        <p>{{painting.artist}}</p>
+        <p>{{ painting.artist || ('image.unknown' | translate) }}</p>
           <img
             [src]="painting.url"
-            [alt]="painting.title"
+            [alt]="painting.title || ('image.unknown' | translate)"
           />
-          <p>{{painting.title}}</p>
+          <p>{{ painting.title || ('image.unknown' | translate) }}</p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-container" *ngIf="totalPages > 1">
+    <div class="pagination">
+      <!-- Previous Button -->
+      <button 
+        class="pagination-btn prev-btn" 
+        [disabled]="currentPage === 1"
+        (click)="previousPage()"
+        title="Previous page"
+      >
+        ‹
+      </button>
+
+      <!-- Page Numbers -->
+      <button 
+        *ngFor="let page of pageNumbers"
+        class="pagination-btn page-btn"
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+
+      <!-- Next Button -->
+      <button 
+        class="pagination-btn next-btn" 
+        [disabled]="currentPage === totalPages"
+        (click)="nextPage()"
+        title="Next page"
+      >
+        ›
+      </button>
+    </div>
+
+    <!-- Page Info -->
+    <div class="page-info">
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
     </div>
   </div>
 </div>

@@ -524,7 +524,7 @@
     "title": "Κοπέλα Άγγελος",
     "artist": "Μαρία Δόση",
     "year": 2005,
-    "dimensions": "          88r111",
+    "dimensions": "88r111",
     "materials": "Λαδι σε καμβα",
     "description": "Ένας έκπτωτος άγγελος με κατεβασμένο κεφάλι ντυμένος στα άσπρα σε ένα πολύχρωμο φωτισμένο φόντο.",
     "ownershipCost": 4500,
@@ -1196,19 +1196,6 @@
     "url": "assets/images/93.jpg"
   },
   {
-    "id": 94,
-    "title": "Κοπέλα με αγάλματα",
-    "artist": "Roxyhaboba",
-    "year": null,
-    "dimensions": "36r53",
-    "materials": "Λαδι σε καμβα",
-    "description": "",
-    "ownershipCost": 500,
-    "price": 900,
-    "image": "94.jpg",
-    "url": "assets/images/94.jpg"
-  },
-  {
     "id": 95,
     "title": "Περιστέρι 5 πρόσωπα",
     "artist": "тихомир панайотов Tihomir Panayotov TNX",
@@ -1610,19 +1597,6 @@
     "price": 1300,
     "image": "125.jpg",
     "url": "assets/images/125.jpg"
-  },
-  {
-    "id": 126,
-    "title": "Μωσαικό ",
-    "artist": "Unknown Artist",
-    "year": 2007,
-    "dimensions": "80*60",
-    "materials": "Λαδι σε καμβα",
-    "description": "Ενα χιονισμένο πυκνοφυτεμένο δάσος ξεπροβάλεται χωρίς τέλος. Τόσο πυκνό που ούτε το φώς του ήλιου δεν μπορεί να φτάσει το έδαφος.",
-    "ownershipCost": 750,
-    "price": 1300,
-    "image": "126.jpg",
-    "url": "assets/images/126.jpg"
   },
   {
     "id": 127,

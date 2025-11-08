@@ -1,0 +1,51 @@
+# Root gitignore for gallery-app project
+
+# Backend folder (not used)
+gallery_backend/
+
+# Docker files (not used)
+docker-compose.yml
+Dockerfile
+.dockerignore
+*/Dockerfile
+deploy/
+DEPLOYMENT_GUIDE.md
+
+# Old deployment scripts (replaced by deploy.ps1)
+backend_build.ps1
+frontend_build.ps1
+deploy-to-github.ps1
+deploy-github-pages.ps1
+quick-deploy.ps1
+build-angular.ps1
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Angular
+/gallery-app/dist/
+/gallery-app/.angular/
+/gallery-app/tmp/
+/gallery-app/out-tsc/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment files (if they contain secrets)
+.env
+*.env
+!.env.example
+
+# Build scripts (optional - remove if you want to track them)
+backend_build.ps1
+frontend_build.ps1
