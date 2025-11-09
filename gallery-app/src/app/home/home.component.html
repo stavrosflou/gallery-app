@@ -2,47 +2,30 @@
   <div class="carousel-section">
     <h1 class="carousel-title">Featured Artworks</h1>
     
-    <div class="carousel" *ngIf="featuredPaintings.length > 0">
-      <div class="carousel-wrapper">
-        <div class="carousel-slides" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
-          <div class="carousel-slide" *ngFor="let painting of featuredPaintings">
-            <div class="slide-content" (click)="viewPainting(painting.id)">
-              <img [src]="painting.url" [alt]="painting.title" class="slide-image">
-              <!-- <div class="slide-info">
-                <h2 class="slide-title">{{ painting.title }}</h2>
-                <p class="slide-artist">{{ painting.artist }}</p>
-              </div> -->
-            </div>
-          </div>
+    <swiper-container
+      init="false"
+      #swiperContainer
+      class="gallery-swiper"
+    >
+      <swiper-slide *ngFor="let image of images">
+        <div class="image-wrapper">
+          <img 
+            [src]="image.itemImageSrc" 
+            [alt]="image.alt"
+            loading="lazy"
+            fetchpriority="high"
+          />
         </div>
-      </div>
+      </swiper-slide>
+    </swiper-container>
 
-      <!-- Navigation Arrows -->
-      <button class="carousel-arrow carousel-arrow-left" (click)="previousSlide()">
-        &#10094;
-      </button>
-      <button class="carousel-arrow carousel-arrow-right" (click)="nextSlide()">
-        &#10095;
-      </button>
-
-      <!-- Dots Indicator -->
-      <div class="carousel-dots">
-        <span 
-          *ngFor="let painting of featuredPaintings; let i = index" 
-          class="dot" 
-          [class.active]="i === currentSlide"
-          (click)="goToSlide(i)">
-        </span>
-      </div>
-    </div>
-
-    <!-- Mobile-only inspirational section -->
-    <div class="mobile-quote-section">
+    <!-- Inspirational section -->
+    <div class="quote-section">
       <blockquote class="gallery-quote">
-        <p class="quote-text">"Art enables us to find ourselves and lose ourselves at the same time."</p>
-        <cite class="quote-author">— Thomas Merton</cite>
+        <p class="quote-text">"{{ selectedQuote.text }}"</p>
+        <cite class="quote-author">— {{ selectedQuote.author }}</cite>
       </blockquote>
-      <div class="mobile-cta">
+      <div class="cta">
         <p class="cta-text">Discover our complete collection</p>
         <button class="explore-link" (click)="goToGallery()">
           Explore Gallery →

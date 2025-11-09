@@ -10,14 +10,24 @@
         <div class="artist-right">{{ image.artist || ('image.unknown' | translate) }}</div>
       </div>
       <div class="image-wrapper" (click)="openModal()">
-        <img [src]="image.src" [alt]="image.title || ('image.unknown' | translate)" />
+        <img 
+          [src]="image.src" 
+          [alt]="image.title || ('image.unknown' | translate)"
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
     </div>
 
     <!-- Description Section -->
     <div class="description-side">
       <div class="thumbnail-container">
-        <img [src]="image.src" [alt]="image.title || ('image.unknown' | translate)" class="description-thumbnail" />
+        <img 
+          [src]="image.src" 
+          [alt]="image.title || ('image.unknown' | translate)" 
+          class="description-thumbnail"
+          loading="lazy"
+        />
         <!-- Visual dimension lines with actual measurements -->
         <div class="dimension-lines">
           <div class="dimension-width">

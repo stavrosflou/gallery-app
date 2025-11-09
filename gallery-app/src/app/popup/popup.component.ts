@@ -24,6 +24,11 @@ export class PopupComponent implements OnInit, OnDestroy, OnChanges {
   isSubmitting = false;
   showValidationErrors = false;
   
+  // Toast notification
+  showToast = false;
+  toastMessage = '';
+  toastType: 'success' | 'error' | 'warning' = 'success';
+  
   // Anti-spam measures
   private lastSubmissionTime: number = 0;
   private readonly MIN_TIME_BETWEEN_SUBMISSIONS = 10000; // 10 seconds
@@ -83,7 +88,10 @@ export class PopupComponent implements OnInit, OnDestroy, OnChanges {
       const timeSinceLastSubmission = Date.now() - this.lastSubmissionTime;
       if (timeSinceLastSubmission < this.MIN_TIME_BETWEEN_SUBMISSIONS) {
         const waitSeconds = Math.ceil((this.MIN_TIME_BETWEEN_SUBMISSIONS - timeSinceLastSubmission) / 1000);
-        alert(this.translationService.translate('popup.waitBetweenSubmissionsError') || `Please wait ${waitSeconds} seconds before submitting again.`);
+        this.showToastNotification(
+          this.translationService.translate('popup.waitBetweenSubmissionsError') || `Please wait ${waitSeconds} seconds before submitting again.`,
+          'warning'
+        );
         return;
       }
     }
@@ -101,17 +109,34 @@ export class PopupComponent implements OnInit, OnDestroy, OnChanges {
 
       if (success) {
         this.lastSubmissionTime = Date.now();
-        alert(this.translationService.translate('popup.successMessage'));
-        this.close();
+        this.showToastNotification(
+          this.translationService.translate('popup.successMessage'),
+          'success'
+        );
+        setTimeout(() => this.close(), 2000); // Close after 2 seconds
       } else {
         throw new Error('Email sending failed');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert(this.translationService.translate('popup.errorMessage'));
+      this.showToastNotification(
+        this.translationService.translate('popup.errorMessage'),
+        'error'
+      );
     } finally {
       this.isSubmitting = false;
     }
+  }
+
+  showToastNotification(message: string, type: 'success' | 'error' | 'warning') {
+    this.toastMessage = message;
+    this.toastType = type;
+    this.showToast = true;
+    
+    // Auto-hide after 4 seconds
+    setTimeout(() => {
+      this.showToast = false;
+    }, 4000);
   }
 
   private readonly emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

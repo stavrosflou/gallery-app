@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, shareReplay } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
@@ -11,16 +11,23 @@ export class GalleryService {
   private apiUrl = `${environment.apiBaseUrl}/images/gallery/`;
   private imagesCache: any[] | null = null;
   private localDataUrl = 'assets/data/paintings.json';
+  private images$: Observable<any[]> | null = null;
 
   constructor(private http: HttpClient) { }
 
   getImages(): Observable<any> {
+    // If we already have cached data in memory, return it immediately
     if (this.imagesCache) {
       return of(this.imagesCache);
     }
     
-    // Use local JSON data instead of backend API
-    return this.http.get<any[]>(this.localDataUrl).pipe(
+    // If a request is already in flight, share it
+    if (this.images$) {
+      return this.images$;
+    }
+    
+    // Use local JSON data instead of backend API with shareReplay to prevent multiple requests
+    this.images$ = this.http.get<any[]>(this.localDataUrl).pipe(
       map(data => {
         // Transform the data to match the expected format
         return data.map(item => ({
@@ -36,8 +43,14 @@ export class GalleryService {
           url: item.url
         }));
       }),
-      tap(data => this.imagesCache = data)
+      tap(data => {
+        this.imagesCache = data;
+        this.images$ = null; // Clear the observable after caching
+      }),
+      shareReplay(1) // Share the result with all subscribers
     );
+    
+    return this.images$;
   }
 
   getImageById(id: number): Observable<any> {

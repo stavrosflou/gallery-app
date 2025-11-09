@@ -1,4 +1,21 @@
 <div class="popup-backdrop" *ngIf="isOpen">
+  <!-- Toast Notification -->
+  <div class="toast-notification" 
+       *ngIf="showToast" 
+       [ngClass]="'toast-' + toastType">
+    <div class="toast-content">
+      <span class="toast-icon">
+        <ng-container [ngSwitch]="toastType">
+          <span *ngSwitchCase="'success'">✓</span>
+          <span *ngSwitchCase="'error'">✕</span>
+          <span *ngSwitchCase="'warning'">⚠</span>
+        </ng-container>
+      </span>
+      <span class="toast-message">{{ toastMessage }}</span>
+    </div>
+    <button class="toast-close" (click)="showToast = false">&times;</button>
+  </div>
+
   <div class="popup">
     <div class="popup-header">
       <h2 class="popup-title">

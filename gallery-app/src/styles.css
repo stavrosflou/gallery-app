@@ -8,6 +8,11 @@ body{
     -ms-text-size-adjust: 100%;
 }
 
+/* Swiper CSS */
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
 app-root {
   display: flex;
   flex-direction: column;

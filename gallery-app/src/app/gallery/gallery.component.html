@@ -45,7 +45,27 @@
 
   <!-- Gallery Grid -->
   <div class="gallery">
-    <div class="row" *ngFor="let row of rows">
+    <!-- Loading Skeleton -->
+    <div class="loading-skeleton" *ngIf="isLoading">
+      <div class="skeleton-row" *ngFor="let i of [1,2,3,4,5,6]">
+        <div class="skeleton-item" *ngFor="let j of [1,2,3]">
+          <div class="skeleton-image"></div>
+          <div class="skeleton-text"></div>
+          <div class="skeleton-text short"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" *ngIf="!isLoading && rows.length === 0">
+      <svg class="no-results-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path>
+      </svg>
+      <h3 class="no-results-title">{{ 'gallery.noResults' | translate }}</h3>
+      <p class="no-results-subtitle">{{ 'gallery.tryDifferentSearch' | translate }}</p>
+    </div>
+
+    <div class="row" *ngFor="let row of rows" [class.hidden]="isLoading">
       <!-- Option 1: Use wrapper to prevent trembling -->
       <div 
         class="painting-wrapper"
@@ -60,6 +80,9 @@
           <img
             [src]="painting.url"
             [alt]="painting.title || ('image.unknown' | translate)"
+            loading="lazy"
+            width="300"
+            height="300"
           />
           <p>{{ painting.title || ('image.unknown' | translate) }}</p>
         </div>

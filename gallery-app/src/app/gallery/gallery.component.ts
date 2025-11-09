@@ -39,6 +39,7 @@ export class GalleryComponent {
   filteredPaintings: any[] = []; // Store filtered data
   searchTerm: string = '';
   selectedSort: string = '';
+  isLoading: boolean = true;
   
   // Pagination properties
   currentPage: number = 1;
@@ -59,6 +60,7 @@ export class GalleryComponent {
     // const splashShown = sessionStorage.getItem('splash-shown');
     
     // Fetch images from local JSON data
+    this.isLoading = true;
     this.galleryService.getImages().subscribe((data) => {
       this.allPaintings = data.map((item: any) => ({
         id: item.id,
@@ -73,6 +75,7 @@ export class GalleryComponent {
         ownershipCost: item.ownershipCost
       }));
       this.applyFiltersAndSort();
+      this.isLoading = false;
       
       // Show splash only once per tab session
       // if (!splashShown && this.allPaintings.length > 0) {
