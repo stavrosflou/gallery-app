@@ -16,7 +16,9 @@
     "sortDefault": "Προεπιλογή",
     "sortTitle": "Τίτλος",
     "sortArtist": "Καλλιτέχνης",
-    "sortYear": "Έτος"
+    "sortYear": "Έτος",
+    "noResults": "Δεν βρέθηκαν πίνακες",
+    "tryDifferentSearch": "Δοκιμάστε να προσαρμόσετε την αναζήτηση ή τα φίλτρα σας"
   },
   "image": {
     "artist": "Καλλιτέχνης:",

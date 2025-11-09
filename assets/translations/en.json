@@ -16,7 +16,9 @@
     "sortDefault": "Default",
     "sortTitle": "Title",
     "sortArtist": "Artist",
-    "sortYear": "Year"
+    "sortYear": "Year",
+    "noResults": "No paintings found",
+    "tryDifferentSearch": "Try adjusting your search or filters"
   },
   "image": {
     "artist": "Artist:",
