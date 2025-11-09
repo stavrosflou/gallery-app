@@ -87,14 +87,10 @@ export class SingleImageComponent implements OnInit {
   isModalOpen = false;
 
 openModal() {
-    console.log('👉 openModal called'); // test
-
   this.isModalOpen = true;
 }
 
 closeModal() {
-    console.log('👉 closeModal called'); // test
-
   this.isModalOpen = false;
 }
 

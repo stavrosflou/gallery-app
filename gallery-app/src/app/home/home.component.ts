@@ -125,12 +125,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         const swiper = swiperEl.swiper;
         const activeIndex = swiper.realIndex;
         const imageId = this.images[activeIndex]?.id;
-        console.log('Navigating to painting:', imageId, 'from index:', activeIndex);
         if (imageId) {
           this.ngZone.run(() => {
-            console.log('About to navigate to:', `/paintings/${imageId}`);
             this.router.navigate(['/paintings', imageId]).then(success => {
-              console.log('Navigation result:', success);
             }).catch(error => {
               console.error('Navigation error:', error);
             });
