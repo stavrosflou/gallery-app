@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <!-- Κεντρική σελίδα -->
+   <url>
+      <loc>https://centralgalleryart.com/</loc>
+      <priority>1.0</priority>
+   </url>
+
+   <!-- Σελίδα gallery -->
+   <url>
+      <loc>https://centralgalleryart.com/paintings</loc>
+      <priority>0.8</priority>
+   </url>
+
+   <!-- Μερικά επιλεγμένα έργα -->
+   <url>
+      <loc>https://centralgalleryart.com/paintings/2</loc>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://centralgalleryart.com/paintings/5</loc>
+      <priority>0.7</priority>
+   </url>
+   <url>
+      <loc>https://centralgalleryart.com/paintings/10</loc>
+      <priority>0.7</priority>
+   </url>
+
+</urlset>
