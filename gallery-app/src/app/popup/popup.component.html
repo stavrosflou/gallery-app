@@ -1,39 +1,11 @@
 <div class="popup-backdrop" *ngIf="isOpen">
-  <!-- Toast Notification -->
-  <div class="toast-notification" 
-       *ngIf="showToast" 
-       [ngClass]="'toast-' + toastType">
-    <div class="toast-content">
-      <span class="toast-icon">
-        <ng-container [ngSwitch]="toastType">
-          <span *ngSwitchCase="'success'">✓</span>
-          <span *ngSwitchCase="'error'">✕</span>
-          <span *ngSwitchCase="'warning'">⚠</span>
-        </ng-container>
-      </span>
-      <span class="toast-message">{{ toastMessage }}</span>
-    </div>
-    <button class="toast-close" (click)="showToast = false">&times;</button>
-  </div>
-
   <div class="popup">
     <div class="popup-header">
-      <h2 class="popup-title">
-        {{ 'popup.title' | translate }}
-      </h2>
+      <h2 class="popup-title">{{ 'popup.title' | translate }}</h2>
       <button class="popup-close" (click)="close()">&times;</button>
     </div>
-
-    <!-- Painting Information Display -->
-    <div class="painting-info" *ngIf="paintingInfo">
-      <div class="painting-details">
-        <h3 class="painting-title">{{ paintingInfo.title || ('image.unknown' | translate) }}</h3>
-        <p class="painting-artist">{{ 'image.artist' | translate }} {{ paintingInfo.artist || ('image.unknown' | translate) }}</p>
-      </div>
-    </div>
-
     <div class="popup-body">
-      <form (ngSubmit)="onSubmit()" class="contact-form" #contactForm="ngForm">
+      <form (ngSubmit)="onSubmit()" class="contact-form">
         <div class="form-group">
           <label for="name">{{ 'popup.name' | translate }}</label>
           <input 
@@ -42,15 +14,9 @@
             [(ngModel)]="name" 
             name="name"
             [placeholder]="'popup.namePlaceholder' | translate"
-            #nameField="ngModel"
+            required
           />
-          <!-- Custom validation error display -->
-          <div class="field-error" *ngIf="showValidationErrors">
-            <span *ngIf="name.length === 0 || !name.trim()">{{ 'popup.nameRequired' | translate }}</span>
-            <span *ngIf="name.length > 0 && isNameInvalid()">{{ 'popup.nameMinLength' | translate }}</span>
-          </div>
         </div>
-        
         <div class="form-group">
           <label for="email">{{ 'popup.email' | translate }}</label>
           <input 
@@ -58,33 +24,10 @@
             id="email" 
             [(ngModel)]="email" 
             name="email"
-            [placeholder]="'email@example.com'"
-            #emailField="ngModel"
+            [placeholder]="'popup.emailPlaceholder' | translate"
+            required
           />
-          <!-- Custom validation error display -->
-          <div class="field-error" *ngIf="showValidationErrors">
-            <span *ngIf="email.length === 0 || !email.trim()">{{ 'popup.emailRequired' | translate }}</span>
-            <span *ngIf="email.length > 0 && isEmailInvalid()">{{ 'popup.emailInvalid' | translate }}</span>
-          </div>
         </div>
-        
-        <div class="form-group">
-          <label for="phone">{{ 'popup.phone' | translate }}</label>
-          <input 
-            type="tel" 
-            id="phone" 
-            [(ngModel)]="phone" 
-            name="phone"
-            [placeholder]="'popup.phonePlaceholder' | translate"
-            #phoneField="ngModel"
-          />
-          <!-- Custom validation error display -->
-          <div class="field-error" *ngIf="showValidationErrors">
-            <span *ngIf="phone.length === 0 || !phone.trim()">{{ 'popup.phoneRequired' | translate }}</span>
-            <span *ngIf="phone.length > 0 && isPhoneInvalid()">{{ 'popup.phoneInvalid' | translate }}</span>
-          </div>
-        </div>
-        
         <div class="form-group">
           <label for="message">{{ 'popup.message' | translate }}</label>
           <textarea 
@@ -92,15 +35,10 @@
             [(ngModel)]="message" 
             name="message"
             [placeholder]="'popup.messagePlaceholder' | translate"
-            rows="2"
-            #messageField="ngModel"
+            rows="5"
+            required
           ></textarea>
-          <!-- Custom validation error display -->
-          <div class="field-error" *ngIf="showValidationErrors">
-            <span *ngIf="message.length === 0 || !message.trim()">{{ 'popup.messageRequired' | translate }}</span>
-          </div>
         </div>
-        
         <div class="popup-footer">
           <button type="button" class="cancel-button" (click)="close()">{{ 'popup.cancel' | translate }}</button>
           <button type="submit" class="submit-button" [disabled]="isSubmitting">
